@@ -91,6 +91,7 @@ flutter:
     - assets/images/login.png
     - assets/images/circle.png
     - assets/images/line.png
+    - assets/icons/ic_launcher.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

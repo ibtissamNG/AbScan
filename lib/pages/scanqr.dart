@@ -2,6 +2,7 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 
 class CreateScreen extends StatefulWidget {
@@ -11,7 +12,9 @@ class CreateScreen extends StatefulWidget {
 
 class _CreateScreenState extends State<CreateScreen> {
   var time = DateTime.now();
-  var date, heure;
+  var  heure;
+   String date='';
+
 
   late CollectionReference col;
   String documentId = '';
@@ -27,7 +30,10 @@ class _CreateScreenState extends State<CreateScreen> {
   @override
   void initState() {
     super.initState();
-    date = '${time.day}/${time.month}/${time.year}';
+    // date = '${time.day}/${time.month}/${time.year} ';
+    DateFormat dateFormatter = DateFormat('dd/MM/yyyy');
+    date = dateFormatter.format(time);
+
     col = FirebaseFirestore.instance.collection('qrcode');
   }
 
