@@ -1,12 +1,3 @@
-## Getting Started
+## AbScan
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+L'application mobile «AbScan» vise à automatiser la gestion des absences. AbScan permet aux enseignants de générer un code QR unique pour chaque séance. Les étudiants peuvent ensuite scanner ce code avec l'application pour confirmer leur présence. Cette approche élimine les erreurs de saisie et simplifie la collecte des données. De plus, toutes les informations sur les absences sont centralisées dans l'application, ce qui facilite la recherche d'informations passées. Grâce à AbScan, le suivi des absences devient plus efficace et en temps réel. Les données sont sécurisées et protégées contre les pertes ou les détériorations. Les enseignants peuvent ainsi gérer les absences de manière plus efficace, réduisant ainsi la complexité, la lenteur et le désordre associés à la gestion manuelle.
