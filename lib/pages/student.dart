@@ -344,7 +344,6 @@ class _StudentState extends State<Student> {
                                                 .doc(value)
                                                 .update({
                                                   'students': students,
-                                                  'studentLocation': address,
                                                 })
                                                 .then((value) =>
                                                     ScaffoldMessenger.of(

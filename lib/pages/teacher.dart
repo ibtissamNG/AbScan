@@ -24,20 +24,18 @@ class Teacher extends StatefulWidget {
 class _TeacherState extends State<Teacher> {
   late Timer _timer;
   String date = "";
-  bool qrExist = false;
 
-  // int _counter = 0;
 
   List<String> List_etudiants = [];
   List<String> items_filiere = [];
   List<String> items_niveau = [];
   List<String> items_matiere = [];
   final Stream<QuerySnapshot> stream =
-      FirebaseFirestore.instance.collection('filiere').snapshots();
+  FirebaseFirestore.instance.collection('filiere').snapshots();
   final Stream<QuerySnapshot> stream_niveau =
-      FirebaseFirestore.instance.collection('niveau').snapshots();
+  FirebaseFirestore.instance.collection('niveau').snapshots();
   final Stream<QuerySnapshot> stream_matiere =
-      FirebaseFirestore.instance.collection('matiere').snapshots();
+  FirebaseFirestore.instance.collection('matiere').snapshots();
 
   User? user;
   String? emailTeacher;
@@ -52,8 +50,6 @@ class _TeacherState extends State<Teacher> {
   DateTime? selectedDate;
   String? formattedDate;
   String? selectedDateShort;
-  // String formattedTime = DateFormat('kk:mm').format(DateTime.now());
-  // String hour = DateFormat('a').format(DateTime.now());
 
   String? generatedQRCode;
 
@@ -97,7 +93,7 @@ class _TeacherState extends State<Teacher> {
     await initializeDateFormatting('fr', "");
     DateTime now = DateTime.now();
     String formattedDateTime =
-        DateFormat('EEEE d MMMM yyyy - HH:mm', 'fr').format(now);
+    DateFormat('EEEE d MMMM yyyy - HH:mm', 'fr').format(now);
     setState(() {
       date = formattedDateTime;
     });
@@ -135,7 +131,7 @@ class _TeacherState extends State<Teacher> {
     if (lat == null || lang == null) return "";
     GeoCode geoCode = GeoCode();
     Address address =
-        await geoCode.reverseGeocoding(latitude: lat, longitude: lang);
+    await geoCode.reverseGeocoding(latitude: lat, longitude: lang);
     return "${address.region},${address.city}, ${address.countryName}";
   }
 
@@ -189,9 +185,9 @@ class _TeacherState extends State<Teacher> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                Theme.of(context).primaryColor,
-                Theme.of(context).hintColor.withOpacity(0.8),
-              ])),
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).hintColor.withOpacity(0.8),
+                  ])),
         ),
         actions: [
           Padding(
@@ -286,7 +282,7 @@ class _TeacherState extends State<Teacher> {
                                           leading: Icon(
                                             Icons.my_location,
                                             color:
-                                                Theme.of(context).primaryColor,
+                                            Theme.of(context).primaryColor,
                                           ),
                                           title: const Text(
                                             "Localisation",
@@ -294,7 +290,7 @@ class _TeacherState extends State<Teacher> {
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           subtitle: Text(address !=
-                                                  "Throttled! See geocode.xyz/pricing, null, Throttled! See geocode.xyz/pricing"
+                                              "Throttled! See geocode.xyz/pricing, null, Throttled! See geocode.xyz/pricing"
                                               ? address
                                               : "Erreur! Essayer de vous reconnecter"),
                                         ),
@@ -302,7 +298,7 @@ class _TeacherState extends State<Teacher> {
                                           leading: Icon(
                                             Icons.email,
                                             color:
-                                                Theme.of(context).primaryColor,
+                                            Theme.of(context).primaryColor,
                                           ),
                                           title: const Text(
                                             "Email",
@@ -353,12 +349,12 @@ class _TeacherState extends State<Teacher> {
                               .snapshots(),
                           builder: (context, snapshot) {
                             List<DropdownMenuItem<String>> filiereItemsString =
-                                [];
+                            [];
                             if (!snapshot.hasData) {
                               return CircularProgressIndicator();
                             } else {
                               final filieres =
-                                  snapshot.data?.docs.reversed.toList();
+                              snapshot.data?.docs.reversed.toList();
                               for (var filiere in filieres!) {
                                 filiereItemsString.add(DropdownMenuItem<String>(
                                     value: filiere['name'],
@@ -404,12 +400,12 @@ class _TeacherState extends State<Teacher> {
                               .snapshots(),
                           builder: (context, snapshot) {
                             List<DropdownMenuItem<String>> niveauItemsString =
-                                [];
+                            [];
                             if (!snapshot.hasData) {
                               return CircularProgressIndicator();
                             } else {
                               final niveaux =
-                                  snapshot.data?.docs.reversed.toList();
+                              snapshot.data?.docs.reversed.toList();
                               for (var niveau in niveaux!) {
                                 niveauItemsString.add(DropdownMenuItem<String>(
                                     value: niveau['name'],
@@ -460,12 +456,12 @@ class _TeacherState extends State<Teacher> {
                                   .snapshots(),
                               builder: (context, snapshot) {
                                 List<DropdownMenuItem<String>>
-                                    matiereItemsString = [];
+                                matiereItemsString = [];
                                 if (!snapshot.hasData) {
                                   CircularProgressIndicator();
                                 } else {
                                   final matieres =
-                                      snapshot.data?.docs.reversed.toList();
+                                  snapshot.data?.docs.reversed.toList();
                                   for (var matiere in matieres!) {
                                     matiereItemsString.add(
                                         DropdownMenuItem<String>(
@@ -500,10 +496,10 @@ class _TeacherState extends State<Teacher> {
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor:
-                          Theme.of(context).hintColor, // Text color
+                      Theme.of(context).hintColor, // Text color
                       shape: RoundedRectangleBorder(
                         borderRadius:
-                            BorderRadius.circular(8), // Rounded corners
+                        BorderRadius.circular(8), // Rounded corners
                       ),
                       textStyle: const TextStyle(
                         fontSize: 16, // Text size
@@ -572,10 +568,10 @@ class _TeacherState extends State<Teacher> {
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor:
-                            Theme.of(context).hintColor, // Text color
+                        Theme.of(context).hintColor, // Text color
                         shape: RoundedRectangleBorder(
                           borderRadius:
-                              BorderRadius.circular(8), // Rounded corners
+                          BorderRadius.circular(8), // Rounded corners
                         ),
                         textStyle: const TextStyle(
                           fontSize: 16, // Text size
@@ -658,7 +654,6 @@ class _TeacherState extends State<Teacher> {
     etudiants = [];
     etudiantsAbsents = [];
     List_etudiants = [];
-    qrExist = false;
 
     if (selectedFiliere != null &&
         selectedNiveau != null &&
@@ -673,7 +668,7 @@ class _TeacherState extends State<Teacher> {
         List<String> names = [];
         snapshot.docs.forEach((DocumentSnapshot document) {
           Map<String, dynamic> userData =
-              document.data() as Map<String, dynamic>;
+          document.data() as Map<String, dynamic>;
           String name = userData['nom'] as String;
           String prenom = userData['prenom'] as String;
           name = name[0].toUpperCase() + name.substring(1).toLowerCase();
@@ -702,18 +697,18 @@ class _TeacherState extends State<Teacher> {
       querySnapshot.docs.forEach((doc) {
         List<String> students = List<String>.from(doc['students']);
         etudiantsPresent.addAll(students);
-        qrExist = true;
+
       });
 
       // checking for the absent students by comparing the present list and the whole class list
       etudiantsAbsents = List_etudiants.where(
-          (etudiant) => !etudiantsPresent.contains(etudiant)).toList();
+              (etudiant) => !etudiantsPresent.contains(etudiant)).toList();
 
       // Remplacer List_etudiants par etudiants
       etudiants = etudiantsPresent + etudiantsAbsents;
       etudiants
           .sort((a, b) => b.compareTo(a)); // Sort the list in descending order
-      if (qrExist) {
+
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -748,19 +743,7 @@ class _TeacherState extends State<Teacher> {
             );
           },
         );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: AwesomeSnackbarContent(
-              title: "Alert",
-              message: "Liste introuvable, vérifiez les informations entrées.",
-              contentType: ContentType.warning,
-            ),
-            backgroundColor:
-                Colors.transparent, // Set the background color here
-          ),
-        );
-      }
+
     }).catchError((error) {
       print('Erreur lors de la récupération des QR codes : $error');
     });

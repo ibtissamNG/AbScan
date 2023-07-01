@@ -38,6 +38,7 @@ class AccessPhoneStorage {
       // Save the file to the application folder
       if (await appDirectory!.exists()) {
         _file = File("${appDirectory!.path}/$fileName");
+        print("PATH PDF FILE: ************** $_file");
 
         // Save the data
         if (writeAsString) {
